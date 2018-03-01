@@ -1,0 +1,47 @@
+{
+  "name": "twitchy",
+  "version": "0.0.0",
+  "description": "Cool twitch toys powered by Web technology.",
+  "main": "twitchy.js",
+  "browserify": {
+    "transform": [
+      [
+        "bubleify",
+        {
+          "target": {
+            "chrome": 52,
+            "safari": 9,
+            "edge": 13,
+            "firefox": 48,
+            "node": 6
+          }
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "preact": "~8.2.7"
+  },
+  "devDependencies": {
+    "bubleify": "^1.1.0",
+    "budo": "~11.1.7"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Thorsten Lorenz",
+    "email": "thlorenz@gmx.de",
+    "url": "http://thlorenz.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thlorenz/twitchy.git"
+  },
+  "homepage": "https://github.com/thlorenz/twitchy",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/thlorenz/twitchy/blob/master/LICENSE"
+  },
+  "engine": {
+    "node": ">=6"
+  }
+}
