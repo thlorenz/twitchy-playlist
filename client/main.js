@@ -12,11 +12,9 @@ class TwitchyApp extends Component {
   constructor() {
     super()
     this._bind()
-    
+
     this._nextSongProvider = new NextSongProvider()
-    this.state = {
-      currentSong: this._nextSongProvider.nextSong()
-    }
+    this._getnextSong()
   }
 
   _bind() {
@@ -25,18 +23,24 @@ class TwitchyApp extends Component {
 
   render() {
     const { currentSong } = this.state
+    if (currentSong == null) return <div>Waiting for song</div>
+
     const { songURL, songTitle } = currentSong
     return (
-      <CurrentSong 
-        songURL={songURL} 
-        songTitle={songTitle} 
+      <CurrentSong
+        songURL={songURL}
+        songTitle={songTitle}
         onsongEnded={this._oncurrentSongEnded} />
     )
   }
-  
-  _oncurrentSongEnded() {
-    const currentSong = this._nextSongProvider.nextSong()
+
+  async _getnextSong() {
+    const currentSong = await this._nextSongProvider.nextSong()
     this.setState(Object.assign({}, this.state, { currentSong }))
+  }
+
+  _oncurrentSongEnded() {
+    this._getnextSong()
   }
 
 }

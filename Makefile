@@ -10,6 +10,8 @@ PORT=-p 9977
 CSS=--css client/main.css
 TITLE=--title 'twitchy-playlist'
 
+APP=server/app
+
 watch:
 	$(BUDO) $(EXCLUDE_MODULES) $(ENTRY) $(CSS) $(TITLE) $(PORT) --live -- -d
 
@@ -21,3 +23,9 @@ watch-raw:
 
 bundle:
 	$(BROWSERIFY) -d $(ENTRY) -o $(OUTPUT)
+
+start:
+	DEBUG='twitchy-app:*' node $(APP)
+
+inspect:
+	DEBUG='twitchy-app:*' node --inspect $(APP)
